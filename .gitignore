@@ -1,0 +1,8 @@
+.env
+PORT=6060
+DB_USERNAME=root
+NODE_ENV=testing
+node_modules
+database.js
+error.log
+combined.log
