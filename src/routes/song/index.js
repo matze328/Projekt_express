@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const { StatusCodes } = require('http-status-codes');
 const { DynamoDB } = require('aws-sdk');
-const dynamoDB = require('../../database/dynamoDB/setup');
+const dynamoDB = require('../../database/dynamo_setup');
 const { uploadFile } = require('../../lambda/handler');
 
 const SongRouter = Router();

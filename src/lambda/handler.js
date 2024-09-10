@@ -2,7 +2,7 @@
 
 const { S3 } = require('@aws-sdk/client-s3');
 const { DynamoDB } = require('@aws-sdk/client-dynamodb');
-
+ 
 const s3 = new S3();
 const dynamoDB = new DynamoDB();
 
