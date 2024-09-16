@@ -2,7 +2,7 @@
 
 const { DynamoDB } = require('@aws-sdk/client-dynamodb');
 
-const dynamoDBClient = new DynamoDB({ region: 'us-east-1' }); // Setze deine Region
+const dynamoDBClient = new DynamoDB({ region: 'eu-central-1' }); // Setze deine Region
 const TABLE_NAME = 'Songs'; // Name deiner DynamoDB-Tabelle
 
 // Funktion zum Speichern von Metadaten in DynamoDB
@@ -11,10 +11,8 @@ const saveMetadataToDynamoDB = async (fileName, metadata) => {
         TableName: TABLE_NAME,
         Item: {
             fileName: { S: fileName }, // Primärschlüssel
-            uploadedAt: { S: new Date().toISOString() }, // Zeitstempel der Hochladung
             artist: { S: metadata.artist || '' }, // Künstlername
             album: { S: metadata.album || '' }, // Albumname
-            genre: { S: metadata.genre || '' }  // Genre
         },
     };
 

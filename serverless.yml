@@ -1,0 +1,28 @@
+service: express-app
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1 # Passe die Region an
+  environment:
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1'
+
+functions:
+  app:
+    handler: app.handler
+    events:
+      - http:
+          path: v1/upload
+          method: post
+
+package:
+  exclude:
+    - node_modules/**
+    - .git/**
+
+plugins:
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    httpPort: 5051
