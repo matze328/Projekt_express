@@ -6,3 +6,4 @@ node_modules
 database.js
 error.log
 combined.log
+.serverless

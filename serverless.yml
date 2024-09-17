@@ -1,28 +1,17 @@
-service: express-app
+service: my-serverless-app
 
 provider:
   name: aws
-  runtime: nodejs18.x
-  region: us-east-1 # Passe die Region an
-  environment:
-    AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1'
+  runtime: nodejs14.x # oder eine andere unterstützte Node.js-Version
+  region: eu-central-1 # oder eine andere Region deiner Wahl
 
 functions:
   app:
-    handler: app.handler
+    handler: index.handler # Verweis auf die index.js-Datei
     events:
       - http:
-          path: v1/upload
+          path: s3-event
           method: post
 
-package:
-  exclude:
-    - node_modules/**
-    - .git/**
-
 plugins:
-  - serverless-offline
-
-custom:
-  serverless-offline:
-    httpPort: 5051
+  - serverless-offline # Optional für lokale Entwicklung
